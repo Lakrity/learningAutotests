@@ -1,8 +1,9 @@
-import re
+import pytest
+import pytest_playwright
 from playwright.sync_api import Playwright, sync_playwright, expect
 
 
-def run(playwright: Playwright) -> None:
+def test_add_todo(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False, slow_mo=500)
     context = browser.new_context()
     page = context.new_page()
@@ -20,5 +21,3 @@ def run(playwright: Playwright) -> None:
     browser.close()
 
 
-with sync_playwright() as playwright:
-    run(playwright)
